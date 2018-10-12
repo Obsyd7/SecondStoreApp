@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondStoreApp", "SecondStoreApp\SecondStoreApp.csproj", "{45E90ACB-5332-4797-B01E-5A78E4EF2626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondStoreApp.Tests", "SecondStoreApp.Tests\SecondStoreApp.Tests.csproj", "{ABABAFE5-467A-48A0-87DF-381F57250A05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45E90ACB-5332-4797-B01E-5A78E4EF2626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E90ACB-5332-4797-B01E-5A78E4EF2626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E90ACB-5332-4797-B01E-5A78E4EF2626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E90ACB-5332-4797-B01E-5A78E4EF2626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABABAFE5-467A-48A0-87DF-381F57250A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABABAFE5-467A-48A0-87DF-381F57250A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABABAFE5-467A-48A0-87DF-381F57250A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABABAFE5-467A-48A0-87DF-381F57250A05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {089E13CB-1153-4928-A1CE-FFE5A0F467E3}
+	EndGlobalSection
+EndGlobal
