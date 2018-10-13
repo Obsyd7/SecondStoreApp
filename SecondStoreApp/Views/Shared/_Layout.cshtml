@@ -13,7 +13,7 @@
             Koszyk (0)
             <span></span>
         </a>
-        <a id="indexHeaderLogo" href="link">
+        <a id="indexHeaderLogo" href="@Url.Content("~/")">
             <img src="@Url.Content("~/Content/ImagesCourse/logo.png")" class="center" />
         </a>
     </div>
@@ -26,18 +26,18 @@
 <footer>
     <nav>
         <ul>
-            <li><a href="link">O nas</a></li>
-            <li><a href="link">Społeczność</a></li>
-            <li><a href="link">Opinie</a></li>
-            <li><a href="link">Pomoc</a></li>
-            <li><a href="link">Regulamin</a></li>
-            <li><a href="link">Kontakt</a></li>
+            <li>@Html.ActionLink("About Us", "StaticSites", "Home", new { name = "AboutUs" }, null)</li>
+            <li>@Html.ActionLink("Community", "StaticSites", "Home", new { name = "Community" }, null)</li>
+            <li>@Html.ActionLink("Opinions", "StaticSites", "Home", new { name = "Opinions" }, null)</li>
+            <li>@Html.ActionLink("Help", "StaticSites", "Home", new { name = "Help" }, null)</li>
+            <li>@Html.ActionLink("Regulation", "StaticSites", "Home", new { name = "Regulation" }, null)</li>
+            <li>@Html.ActionLink("Contact", "StaticSites", "Home", new { name = "Contact" }, null)</li>
         </ul>
     </nav>
     <div id="footerLogo">
     </div>
     <div id="footerCopyright">
-        Copyright &copy; 2016 P. Kursy
+        Copyright &copy; 2018 P. Courses
     </div>
 </footer>
 

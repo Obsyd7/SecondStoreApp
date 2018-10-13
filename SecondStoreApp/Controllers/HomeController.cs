@@ -18,5 +18,10 @@ namespace SecondStoreApp.Controllers
 
             return View(categoryList);
         }
+
+        public ActionResult StaticSites(string name)
+        {
+            return View(name);
+        }
     }
 }
