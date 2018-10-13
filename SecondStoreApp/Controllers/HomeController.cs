@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SecondStoreApp.DAL;
 using SecondStoreApp.Models;
+using SecondStoreApp.ViewModels;
 
 namespace SecondStoreApp.Controllers
 {
@@ -14,14 +15,27 @@ namespace SecondStoreApp.Controllers
 
         public ActionResult Index()
         {
-            var categoryList = db.Categories.ToList();
+            var categories = db.Categories.ToList();
 
-            return View(categoryList);
+            var newest = db.Courses.Where(a => !a.Hidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
+
+            var bestsellers = db.Courses.Where(a => !a.Hidden && a.Bestseller).OrderBy(a => Guid.NewGuid()).Take(3)
+                .ToList();
+
+            var viewmodel = new HomeViewModel()
+            {
+                CategoryViewModel = categories,
+                Bestsellers = bestsellers,
+                NewestCourseViewModel = newest
+            };
+
+            return View(viewmodel);
         }
 
         public ActionResult StaticSites(string name)
         {
             return View(name);
         }
+
     }
 }
