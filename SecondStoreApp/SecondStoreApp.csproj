@@ -123,6 +123,10 @@
     <Compile Include="Migrations\201810130718443_Test.Designer.cs">
       <DependentUpon>201810130718443_Test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810131003552_AddShortDescriptionField.cs" />
+    <Compile Include="Migrations\201810131003552_AddShortDescriptionField.Designer.cs">
+      <DependentUpon>201810131003552_AddShortDescriptionField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810130718443_Test.resx">
       <DependentUpon>201810130718443_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810131003552_AddShortDescriptionField.resx">
+      <DependentUpon>201810131003552_AddShortDescriptionField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

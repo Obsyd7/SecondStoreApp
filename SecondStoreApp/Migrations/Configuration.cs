@@ -1,3 +1,5 @@
+using SecondStoreApp.DAL;
+
 namespace SecondStoreApp.Migrations
 {
     using System;
@@ -5,7 +7,7 @@ namespace SecondStoreApp.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SecondStoreApp.DAL.StoreDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<SecondStoreApp.DAL.StoreDbContext>
     {
         public Configuration()
         {
@@ -14,6 +16,8 @@ namespace SecondStoreApp.Migrations
 
         protected override void Seed(SecondStoreApp.DAL.StoreDbContext context)
         {
+            CourseInitializer.SeedCourseData(context);
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

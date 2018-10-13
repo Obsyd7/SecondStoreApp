@@ -33,6 +33,9 @@ namespace SecondStoreApp.Models
 
         public bool Hidden { get; set; }
 
+        public string ShortDescription { get; set; }
+
+
         public virtual Category Category { get; set; }
     }
 }

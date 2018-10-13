@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
+using SecondStoreApp.Migrations;
 using SecondStoreApp.Models;
 
 namespace SecondStoreApp.DAL
 {
-    public class CourseInitializer : DropCreateDatabaseAlways<StoreDbContext>
+    public class CourseInitializer : MigrateDatabaseToLatestVersion<StoreDbContext, Configuration>
     {
-        protected override void Seed (StoreDbContext context)
-        {
-            SeedCourseData(context);
-            base.Seed(context);
-        }
+        //protected override void Seed (StoreDbContext context)
+        //{
+        //    SeedCourseData(context);
+        //    base.Seed(context);
+        //}
 
-        private void SeedCourseData(StoreDbContext context)
+        public static void SeedCourseData(StoreDbContext context)
         {
             var category = new List<Category>
             {
@@ -71,7 +73,7 @@ namespace SecondStoreApp.DAL
                 },
             };
 
-            category.ForEach(c => context.Categories.Add(c));
+            category.ForEach(c => context.Categories.AddOrUpdate(c));
             context.SaveChanges();
 
             var courses = new List<Course>
@@ -123,7 +125,7 @@ namespace SecondStoreApp.DAL
 
             };
 
-            courses.ForEach(c => context.Courses.Add(c));
+            courses.ForEach(c => context.Courses.AddOrUpdate(c));
             context.SaveChanges();
         }
     }
