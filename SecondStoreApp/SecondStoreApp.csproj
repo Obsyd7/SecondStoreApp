@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\CourseInitializer.cs" />
     <Compile Include="DAL\StoreDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -117,6 +118,10 @@
     <Compile Include="Migrations\201810121746021_SettingUpDatabase.cs" />
     <Compile Include="Migrations\201810121746021_SettingUpDatabase.Designer.cs">
       <DependentUpon>201810121746021_SettingUpDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810130718443_Test.cs" />
+    <Compile Include="Migrations\201810130718443_Test.Designer.cs">
+      <DependentUpon>201810130718443_Test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -148,6 +153,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810121746021_SettingUpDatabase.resx">
       <DependentUpon>201810121746021_SettingUpDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810130718443_Test.resx">
+      <DependentUpon>201810130718443_Test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

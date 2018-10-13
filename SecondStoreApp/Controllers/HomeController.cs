@@ -14,17 +14,9 @@ namespace SecondStoreApp.Controllers
 
         public ActionResult Index()
         {
-            Category category = new Category
-            {
-                CategoryName = "asp.net mvc",
-                IconFileName = "aspNetMvc.png",
-                CategoryDescription = "Description"
-            };
+            var categoryList = db.Categories.ToList();
 
-            db.Categories.Add(category);
-            db.SaveChanges();
-
-            return View();
+            return View(categoryList);
         }
     }
 }

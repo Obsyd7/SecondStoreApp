@@ -10,9 +10,14 @@ namespace SecondStoreApp.DAL
 {
     public class StoreDbContext : DbContext
     {
-        public StoreDbContext() : base("StoreDbContext")
+        public StoreDbContext() : base ("StoreDbContext")
         {
 
+        }
+
+        static StoreDbContext()
+        {
+            Database.SetInitializer<StoreDbContext>(new CourseInitializer());
         }
 
         public DbSet<Course> Courses { get; set; }
