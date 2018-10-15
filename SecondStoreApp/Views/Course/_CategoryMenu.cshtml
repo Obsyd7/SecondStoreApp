@@ -1,0 +1,18 @@
+﻿@using SecondStoreApp.Infrastructure
+@model IEnumerable<SecondStoreApp.Models.Category>
+
+<div id="ListaKategoriZawartosc">
+<nav class="KategorieVertical">
+    <ul>
+        @foreach (var category in Model)
+        {
+            <li>
+                <a href="@Url.Action("List", "Course", new { categoryName = category.CategoryName })" 
+                   style="background-image: url(@Url.CategoryIconsPath(category.IconFileName));">
+                    @category.CategoryName
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
+</div>
