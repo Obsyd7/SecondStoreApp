@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\CourseInitializer.cs" />
@@ -156,6 +157,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AppConfig.cs" />
+    <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\201810121746021_SettingUpDatabase.cs" />
     <Compile Include="Migrations\201810121746021_SettingUpDatabase.Designer.cs">
       <DependentUpon>201810121746021_SettingUpDatabase.cs</DependentUpon>
@@ -193,6 +196,7 @@
     <Content Include="Views\Home\Regulation.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Course\List.cshtml" />
+    <Content Include="Views\Cart\AddToCart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
