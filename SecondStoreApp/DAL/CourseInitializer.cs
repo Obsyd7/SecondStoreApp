@@ -24,7 +24,7 @@ namespace SecondStoreApp.DAL
                 new Category()
                 {
                     CategoryId = 1,
-                    CategoryName = "asp",
+                    CategoryName = "Asp.Net MVC",
                     IconFileName = "asp.png",
                     CategoryDescription = "description asp net mvc",
                 },
@@ -32,42 +32,42 @@ namespace SecondStoreApp.DAL
                 new Category()
                 {
                     CategoryId = 2,
-                    CategoryName = "java",
+                    CategoryName = "Java",
                     IconFileName = "java.png",
                     CategoryDescription = "description java",
                 },
                 new Category()
                 {
                     CategoryId = 3,
-                    CategoryName = "php",
+                    CategoryName = "PHP",
                     IconFileName = "php.png",
                     CategoryDescription = "description php",
                 },
                 new Category()
                 {
                     CategoryId = 4,
-                    CategoryName = "html",
+                    CategoryName = "Html",
                     IconFileName = "html.png",
                     CategoryDescription = "description html",
                 },
                 new Category()
                 {
                     CategoryId = 5,
-                    CategoryName = "css",
+                    CategoryName = "CSS",
                     IconFileName = "css.png",
                     CategoryDescription = "description css",
                 },
                 new Category()
                 {
                     CategoryId = 6,
-                    CategoryName = "xml",
+                    CategoryName = "Xml",
                     IconFileName = "xml.png",
                     CategoryDescription = "description xml",
                 },
                 new Category()
                 {
                     CategoryId = 7,
-                    CategoryName = "c#",
+                    CategoryName = "C#",
                     IconFileName = "c#.png",
                     CategoryDescription = "description c#",
                 },
@@ -80,47 +80,80 @@ namespace SecondStoreApp.DAL
             {
                 new Course()
                 {
-                    Author = "Thomas",
-                    CourseTitle = "asp.net mvc",
+                    Author = "Thomas White",
+                    CourseTitle = "Asp.net MVC",
                     CategoryId = 1,
                     CoursePrice = 99,
                     Bestseller = true,
-                    ImgFileName = "asp.png",
+                    ImgFileName = "obrazekaspnet.png",
                     DateAdded = DateTime.Now,
                     CourseDescription = "course description1"
                 },
                 new Course()
                 {
-                    Author = "Jack",
-                    CourseTitle = "asp.net mvc",
-                    CategoryId = 1,
+                    Author = "Jack Blue",
+                    CourseTitle = "JavaScript",
+                    CategoryId = 2,
                     CoursePrice = 120,
                     Bestseller = true,
-                    ImgFileName = "asp.png",
+                    ImgFileName = "obrazekjavascript.png",
                     DateAdded = DateTime.Now,
                     CourseDescription = "course description2"
                 },
                 new Course()
                 {
-                    Author = "Stephen",
-                    CourseTitle = "asp.net mvc",
-                    CategoryId = 1,
+                    Author = "Stephen Green",
+                    CourseTitle = "JQuery",
+                    CategoryId = 3,
                     CoursePrice = 120,
                     Bestseller = true,
-                    ImgFileName = "asp.png",
+                    ImgFileName = "obrazekjquery.png",
                     DateAdded = DateTime.Now,
                     CourseDescription = "course description3"
                 },
                 new Course()
                 {
-                    Author = "Beth",
-                    CourseTitle = "asp.net mvc",
-                    CategoryId = 1,
+                    Author = "Beth Black",
+                    CourseTitle = "Html5",
+                    CategoryId = 4,
                     CoursePrice = 140,
                     Bestseller = true,
-                    ImgFileName = "asp.png",
+                    ImgFileName = "obrazekhtml.png",
                     DateAdded = DateTime.Now,
                     CourseDescription = "course description4"
+                },
+                new Course()
+                {
+                    Author = "Tom Brown",
+                    CourseTitle = "Css3",
+                    CategoryId = 5,
+                    CoursePrice = 125,
+                    Bestseller = true,
+                    ImgFileName = "obrazekcss.png",
+                    DateAdded = DateTime.Now,
+                    CourseDescription = "course description5"
+                },
+                new Course()
+                {
+                    Author = "Bob Orange",
+                    CourseTitle = "Xml",
+                    CategoryId = 6,
+                    CoursePrice = 90,
+                    Bestseller = true,
+                    ImgFileName = "obrazekxlm.png",
+                    DateAdded = DateTime.Now,
+                    CourseDescription = "course description6"
+                },
+                new Course()
+                {
+                    Author = "Bob Orange",
+                    CourseTitle = "C#",
+                    CategoryId = 7,
+                    CoursePrice = 185,
+                    Bestseller = true,
+                    ImgFileName = "obrazekcsharp.png",
+                    DateAdded = DateTime.Now,
+                    CourseDescription = "course description7"
                 },
 
             };
