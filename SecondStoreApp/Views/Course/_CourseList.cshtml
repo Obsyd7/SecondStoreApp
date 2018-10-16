@@ -1,0 +1,26 @@
+﻿@using SecondStoreApp.Infrastructure
+@model IEnumerable<SecondStoreApp.Models.Course>
+
+
+    <ul class="KursyTrzyKolumny KursCena">
+        @foreach (var course in Model)
+        {
+            <li>
+                <article>
+                    <a class="dodajDoKoszykaLink" href="@Url.Action("AddToCart", "Cart", new {id = course.CourseId})">
+                        <img src="@Url.Content("~/Content/Images/koszyk.png")" />
+                    </a>
+                    @if (course.Bestseller)
+                    {
+                        <div class="bestsellerFlag"></div>
+                    }
+                    <a class="kursSzczegolyLink" href="@Url.Action("Details", "Course", new { id = course.CourseId})">
+                        <img class="kurs" src="@Url.CourseImagesPath(course.ImgFileName)"/>
+                        <h1>
+                            @course.CourseTitle - @course.Author
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
+    </ul>

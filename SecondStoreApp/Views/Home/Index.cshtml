@@ -11,7 +11,7 @@
        {
            <li>
                <a href="@Url.Action("List", "Course", new {categoryName = category.CategoryName.ToLower()})"
-                  style="background-image: url(@Url.CategoryIconsPath(category.CategoryName));">
+                  style="background-image: url(@Url.CategoryIconsPath(category.IconFileName));">
                    @category.CategoryName
                </a>
            </li>

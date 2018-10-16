@@ -171,6 +171,14 @@
     <Compile Include="Migrations\201810131003552_AddShortDescriptionField.Designer.cs">
       <DependentUpon>201810131003552_AddShortDescriptionField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810160834298_Test1.cs" />
+    <Compile Include="Migrations\201810160834298_Test1.Designer.cs">
+      <DependentUpon>201810160834298_Test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810160848000_DatabaseFixDuplicates.cs" />
+    <Compile Include="Migrations\201810160848000_DatabaseFixDuplicates.Designer.cs">
+      <DependentUpon>201810160848000_DatabaseFixDuplicates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
@@ -198,6 +206,7 @@
     <Content Include="Views\Course\List.cshtml" />
     <Content Include="Views\Cart\AddToCart.cshtml" />
     <Content Include="Views\Course\_CategoryMenu.cshtml" />
+    <Content Include="Views\Course\_CourseList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -217,6 +226,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810131003552_AddShortDescriptionField.resx">
       <DependentUpon>201810131003552_AddShortDescriptionField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810160834298_Test1.resx">
+      <DependentUpon>201810160834298_Test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810160848000_DatabaseFixDuplicates.resx">
+      <DependentUpon>201810160848000_DatabaseFixDuplicates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
