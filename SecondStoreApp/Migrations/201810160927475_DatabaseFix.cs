@@ -3,7 +3,7 @@ namespace SecondStoreApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class SettingUpDatabase : DbMigration
+    public partial class DatabaseFix : DbMigration
     {
         public override void Up()
         {
@@ -32,6 +32,7 @@ namespace SecondStoreApp.Migrations
                         CoursePrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Bestseller = c.Boolean(nullable: false),
                         Hidden = c.Boolean(nullable: false),
+                        ShortDescription = c.String(),
                     })
                 .PrimaryKey(t => t.CourseId)
                 .ForeignKey("dbo.Category", t => t.CategoryId, cascadeDelete: true)

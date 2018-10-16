@@ -159,25 +159,9 @@
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\201810121746021_SettingUpDatabase.cs" />
-    <Compile Include="Migrations\201810121746021_SettingUpDatabase.Designer.cs">
-      <DependentUpon>201810121746021_SettingUpDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810130718443_Test.cs" />
-    <Compile Include="Migrations\201810130718443_Test.Designer.cs">
-      <DependentUpon>201810130718443_Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810131003552_AddShortDescriptionField.cs" />
-    <Compile Include="Migrations\201810131003552_AddShortDescriptionField.Designer.cs">
-      <DependentUpon>201810131003552_AddShortDescriptionField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810160834298_Test1.cs" />
-    <Compile Include="Migrations\201810160834298_Test1.Designer.cs">
-      <DependentUpon>201810160834298_Test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810160848000_DatabaseFixDuplicates.cs" />
-    <Compile Include="Migrations\201810160848000_DatabaseFixDuplicates.Designer.cs">
-      <DependentUpon>201810160848000_DatabaseFixDuplicates.cs</DependentUpon>
+    <Compile Include="Migrations\201810160927475_DatabaseFix.cs" />
+    <Compile Include="Migrations\201810160927475_DatabaseFix.Designer.cs">
+      <DependentUpon>201810160927475_DatabaseFix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -218,20 +202,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810121746021_SettingUpDatabase.resx">
-      <DependentUpon>201810121746021_SettingUpDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810130718443_Test.resx">
-      <DependentUpon>201810130718443_Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810131003552_AddShortDescriptionField.resx">
-      <DependentUpon>201810131003552_AddShortDescriptionField.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810160834298_Test1.resx">
-      <DependentUpon>201810160834298_Test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810160848000_DatabaseFixDuplicates.resx">
-      <DependentUpon>201810160848000_DatabaseFixDuplicates.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810160927475_DatabaseFix.resx">
+      <DependentUpon>201810160927475_DatabaseFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

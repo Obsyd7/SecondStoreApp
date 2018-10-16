@@ -7,13 +7,13 @@ namespace SecondStoreApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DatabaseFixDuplicates : IMigrationMetadata
+    public sealed partial class DatabaseFix : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DatabaseFixDuplicates));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DatabaseFix));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810160848000_DatabaseFixDuplicates"; }
+            get { return "201810160927475_DatabaseFix"; }
         }
         
         string IMigrationMetadata.Source
