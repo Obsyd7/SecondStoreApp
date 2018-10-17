@@ -27,9 +27,10 @@ namespace SecondStoreApp.Controllers
             return View(course);
         }
 
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            return View();
+            var course = db.Courses.Find(id);
+            return View(course);
         }
 
         [ChildActionOnly]
