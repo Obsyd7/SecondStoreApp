@@ -14,6 +14,12 @@ namespace SecondStoreApp
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "CourseDetails",
+                url: "course-{id}.html",
+                defaults: new { controller = "Course", action = "Details" }
+            );
+
+            routes.MapRoute(
                 name: "CourseList",
                 url: "Category/{categoryName}",
                 defaults: new { controller = "Course", action = "List"}
