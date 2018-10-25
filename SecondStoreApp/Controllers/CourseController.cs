@@ -19,8 +19,9 @@ namespace SecondStoreApp.Controllers
 
         public ActionResult List(string categoryName)
         {
-            var category = db.Categories.Include("Course")
-                .Where(c => c.CategoryName.ToUpper() == categoryName.ToUpper()).Single();
+            var category = db.Categories.Include("Course").Where(c => c.CategoryName.ToUpper() == categoryName.ToUpper()).Single();
+
+            //var category = db.Categories.Single(c => c.Course.)
 
             var course = category.Course.ToList();
 

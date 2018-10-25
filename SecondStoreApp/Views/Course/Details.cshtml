@@ -1,5 +1,4 @@
 ﻿@model SecondStoreApp.Models.Course
-@using System.Drawing
 @using SecondStoreApp.Infrastructure
 @{
     ViewBag.Title = "Details";
@@ -12,7 +11,7 @@
         <div id="Breadcrumb">
             <img src="../Content/Images/dommaly.png" />
             <a href="link">
-                Start > ASP.NET
+                @Html.MvcSiteMap().SiteMapPath()
             </a>
         </div>
         <section id="SekcjaKurs">

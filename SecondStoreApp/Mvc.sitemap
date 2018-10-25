@@ -4,7 +4,8 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
   <mvcSiteMapNode title="Home" controller="Home" action="Index">
-    <mvcSiteMapNode title="About" controller="Home" action="About"/>
+    <mvcSiteMapNode title="Category" controller="Course" action="List" dynamicNodeProvider="SecondStoreApp.Infrastructure.CategoryDynamicNodeProvider, SecondStoreApp">
+    <mvcSiteMapNode title="Course" controller="Course" action="Details" dynamicNodeProvider="SecondStoreApp.Infrastructure.CourseDetailsDynamicNodeProvider, SecondStoreApp"/>
+    </mvcSiteMapNode>
   </mvcSiteMapNode>
-
 </mvcSiteMap>
