@@ -16,7 +16,8 @@ namespace SecondStoreApp.Controllers
 
         public ActionResult List(string categoryName)
         {
-            var category = db.Categories.Include(x => x.Course).Where(c => c.CategoryName.ToUpper() == categoryName.ToUpper()).Single();
+            var category = db.Categories.Include(x => x.Course).
+                Where(c => c.CategoryName.ToUpper() == categoryName.ToUpper()).Single();
 
             var course = category.Course.ToList();
 
@@ -35,6 +36,14 @@ namespace SecondStoreApp.Controllers
         {
             var categories = db.Categories.ToList();
             return PartialView("_CategoryMenu", categories);
+        }
+
+        public ActionResult CoursePrompts(string term)
+        {
+            var courses = db.Courses.Where(a => !a.Hidden && a.CourseTitle.ToLower().Contains(term.ToLower())).Take(5)
+                .Select(a => new {label = a.CourseTitle});
+
+            return Json(courses, JsonRequestBehavior.AllowGet);
         }
     }
 }
