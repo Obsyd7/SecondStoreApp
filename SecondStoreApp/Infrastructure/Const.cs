@@ -10,5 +10,6 @@ namespace SecondStoreApp.Infrastructure
         public const string NewestCacheKey = "NewestCacheKey";
         public const string BestSellerCacheKey = "BestSellerCacheKey";
         public const string CategoryCacheKey = "CategoryCacheKey";
+        public const string CartSessionKey = "CartSessionKey";
     }
 }
