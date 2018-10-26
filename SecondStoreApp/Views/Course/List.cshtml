@@ -13,6 +13,11 @@
                 @Html.MvcSiteMap().SiteMapPath()
             </a>
         </div>
-            @Html.Partial("_CourseList")
+        @Html.Partial("_CourseList")
     </div>
 </div>
+
+@section Scripts
+{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+}

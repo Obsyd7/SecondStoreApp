@@ -22,14 +22,14 @@ namespace SecondStoreApp.Controllers
 
             List<Category> categories;
 
-            if (cache.IsSet(Const.NewestCacheKey))
+            if (cache.IsSet(Const.CategoryCacheKey))
             {
                 categories = cache.Get(Const.CategoryCacheKey) as List<Category>;
             }
             else
             {
                 categories = db.Categories.ToList();
-                cache.Set(Const.NewestCacheKey, categories, 60);
+                cache.Set(Const.CategoryCacheKey, categories, 60);
             }
 
             List<Course> newest;
