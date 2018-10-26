@@ -174,7 +174,10 @@
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Infrastructure\CategoryDynamicNodeProvider.cs" />
+    <Compile Include="Infrastructure\Const.cs" />
     <Compile Include="Infrastructure\CourseDetailsDynamicNodeProvider.cs" />
+    <Compile Include="Infrastructure\DefaultCacheProvider.cs" />
+    <Compile Include="Infrastructure\ICacheProvider.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\201810160927475_DatabaseFix.cs" />
     <Compile Include="Migrations\201810160927475_DatabaseFix.Designer.cs">

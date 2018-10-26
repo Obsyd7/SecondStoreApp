@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 using SecondStoreApp.DAL;
+using System.Data.Entity;
 
 namespace SecondStoreApp.Controllers
 {
@@ -19,9 +16,7 @@ namespace SecondStoreApp.Controllers
 
         public ActionResult List(string categoryName)
         {
-            var category = db.Categories.Include("Course").Where(c => c.CategoryName.ToUpper() == categoryName.ToUpper()).Single();
-
-            //var category = db.Categories.Single(c => c.Course.)
+            var category = db.Categories.Include(x => x.Course).Where(c => c.CategoryName.ToUpper() == categoryName.ToUpper()).Single();
 
             var course = category.Course.ToList();
 
@@ -35,6 +30,7 @@ namespace SecondStoreApp.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 60000)]
         public ActionResult CategoryMenu(string id)
         {
             var categories = db.Categories.ToList();

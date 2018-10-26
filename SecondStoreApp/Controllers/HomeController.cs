@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SecondStoreApp.DAL;
+using SecondStoreApp.Infrastructure;
 using SecondStoreApp.Models;
 using SecondStoreApp.ViewModels;
 
@@ -15,12 +16,45 @@ namespace SecondStoreApp.Controllers
 
         public ActionResult Index()
         {
-            var categories = db.Categories.ToList();
+            
 
-            var newest = db.Courses.Where(a => !a.Hidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
+            ICacheProvider cache = new DefaultCacheProvider();
 
-            var bestsellers = db.Courses.Where(a => !a.Hidden && a.Bestseller).OrderBy(a => Guid.NewGuid()).Take(3)
-                .ToList();
+            List<Category> categories;
+
+            if (cache.IsSet(Const.NewestCacheKey))
+            {
+                categories = cache.Get(Const.CategoryCacheKey) as List<Category>;
+            }
+            else
+            {
+                categories = db.Categories.ToList();
+                cache.Set(Const.NewestCacheKey, categories, 60);
+            }
+
+            List<Course> newest;
+
+            if (cache.IsSet(Const.NewestCacheKey))
+            {
+                newest = cache.Get(Const.NewestCacheKey) as List<Course>;
+            }
+            else
+            {
+                newest = db.Courses.Where(a => !a.Hidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
+                cache.Set(Const.NewestCacheKey, newest, 60);
+            }
+
+            List<Course> bestsellers;
+
+            if (cache.IsSet(Const.BestSellerCacheKey))
+            {
+                bestsellers = cache.Get(Const.BestSellerCacheKey) as List<Course>;
+            }
+            else
+            {
+                bestsellers = db.Courses.Where(a => !a.Hidden && a.Bestseller).OrderBy(a => Guid.NewGuid()).Take(3).ToList();
+                cache.Set(Const.BestSellerCacheKey, newest, 60);
+            }
 
             var viewmodel = new HomeViewModel()
             {
