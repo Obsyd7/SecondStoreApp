@@ -40,8 +40,8 @@ namespace SecondStoreApp.Controllers
 
         public ActionResult CoursePrompts(string term)
         {
-            var courses = db.Courses.Where(a => !a.Hidden && a.CourseTitle.ToLower().Contains(term.ToLower())).Take(5)
-                .Select(a => new {label = a.CourseTitle});
+            var courses = db.Courses.Where(a => !a.Hidden && a.CourseTitle.ToLower().Contains(term.ToLower()))
+                .Take(5).Select(a => new {label = a.CourseTitle});
 
             return Json(courses, JsonRequestBehavior.AllowGet);
         }
