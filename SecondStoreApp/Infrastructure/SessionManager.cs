@@ -7,11 +7,11 @@ using System.Web.SessionState;
 
 namespace SecondStoreApp.Infrastructure
 {
-    public class SessionMenager : ISessionMenager
+    public class SessionManager : ISessionManager
     {
         private HttpSessionState Session;
 
-        public SessionMenager()
+        public SessionManager()
         {
             Session = HttpContext.Current.Session;
         }

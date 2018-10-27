@@ -232,14 +232,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
-    <Compile Include="Infrastructure\CartMenager.cs" />
+    <Compile Include="Infrastructure\CartManager.cs" />
     <Compile Include="Infrastructure\CategoryDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\Const.cs" />
     <Compile Include="Infrastructure\CourseDetailsDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\DefaultCacheProvider.cs" />
     <Compile Include="Infrastructure\ICacheProvider.cs" />
-    <Compile Include="Infrastructure\ISessionMenager.cs" />
-    <Compile Include="Infrastructure\SessionMenager.cs" />
+    <Compile Include="Infrastructure\ISessionManager.cs" />
+    <Compile Include="Infrastructure\SessionManager.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\201810160927475_DatabaseFix.cs" />
     <Compile Include="Migrations\201810160927475_DatabaseFix.Designer.cs">

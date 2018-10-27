@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SecondStoreApp.Infrastructure
 {
-    public interface ISessionMenager
+    public interface ISessionManager
     {
         T Get<T>(string key);
 

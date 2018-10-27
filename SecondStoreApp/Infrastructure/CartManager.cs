@@ -7,13 +7,13 @@ using SecondStoreApp.Models;
 
 namespace SecondStoreApp.Infrastructure
 {
-    public class CartMenager
+    public class CartManager
     {
         private StoreDbContext db;
 
-        private ISessionMenager session;
+        private ISessionManager session;
 
-        public CartMenager(ISessionMenager session, StoreDbContext db)
+        public CartManager(ISessionManager session, StoreDbContext db)
         {
             this.session = session;
             this.db = db;
@@ -108,7 +108,7 @@ namespace SecondStoreApp.Infrastructure
 
             db.Orders.Add(newOrder);
 
-            if (newOrder.OrderPosition != null)
+            if (newOrder.OrderPosition == null)
                 newOrder.OrderPosition = new List<OrderPosition>();
                 decimal cartValue = 0;
              
@@ -129,6 +129,11 @@ namespace SecondStoreApp.Infrastructure
                 db.SaveChanges();
 
                 return newOrder;
+        }
+
+        public void EmptyCart()
+        {
+            session.Set<List<OrderPosition>>(Const.CartSessionKey, null);
         }
     }
     
