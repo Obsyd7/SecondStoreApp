@@ -7,15 +7,15 @@
 
 <nav class="kategorieHorizontal">
     <ul>
-       @foreach (var category in Model.CategoryViewModel)
-       {
-           <li>
-               <a href="@Url.Action("List", "Course", new {categoryName = category.CategoryName.ToLower()})"
-                  style="background-image: url(@Url.CategoryIconsPath(category.IconFileName));">
-                   @category.CategoryName
-               </a>
-           </li>
-       }
+        @foreach (var category in Model.CategoryViewModel)
+        {
+            <li>
+                <a href="@Url.Action("List", "Course", new {categoryName = category.CategoryName.ToLower()})"
+                   style="background-image: url(@Url.CategoryIconsPath(category.IconFileName));">
+                    @category.CategoryName
+                </a>
+            </li>
+        }
     </ul>
     <a href="link">
         <img id="baner" src="../Content/Images/baner.png" />
@@ -29,11 +29,11 @@
             <li>
                 <article>
                     <a class="dodajDoKoszykaLink" href="@Url.Action("AddToCart", "Cart", new {id = newest.CourseId})">
-                        <img src="../Content/Images/koszyk.png"/>
+                        <img src="../Content/Images/koszyk.png" />
                     </a>
                     <a class="kursSzczegolyLink" href="@Url.Action("Details", "Course", new {id = newest.CourseId})">
                         <div class="newFlag"></div>
-                        <img class="kurs" src="@Url.CourseImagesPath(newest.ImgFileName)"/>
+                        <img class="kurs" src="@Url.CourseImagesPath(newest.ImgFileName)" />
                         <h1>
                             @newest.CourseTitle - @newest.Author
                         </h1>
@@ -50,12 +50,12 @@
         {
             <li>
                 <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png"/>
+                    <a class="dodajDoKoszykaLink" href="@Url.Action("AddToCart", "Cart", new {id = bestseller.CourseId})">
+                        <img src="../Content/Images/koszyk.png" />
                     </a>
                     <a class="kursSzczegolyLink" href="@Url.Action("Details", "Course", new { id = bestseller.CourseId})">
                         <div class="bestsellerFlag"></div>
-                        <img class="kurs" src="@Url.CourseImagesPath(bestseller.ImgFileName)"/>
+                        <img class="kurs" src="@Url.CourseImagesPath(bestseller.ImgFileName)" />
                         <h1>
                             @bestseller.CourseTitle - @bestseller.Author
                         </h1>
@@ -63,6 +63,6 @@
                 </article>
             </li>
         }
-        
+
     </ul>
 </section>

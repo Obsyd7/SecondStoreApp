@@ -1,0 +1,70 @@
+﻿@model SecondStoreApp.ViewModels.CartViewModel
+@using SecondStoreApp.Infrastructure
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="ListaKategoriZawartosc">
+    @Html.Action("CategoryMenu", "Course")
+    <div id="KategorieListPrawaSekcja">
+        <div id="Breadcrumb">
+            <img src="../Content/Images/dommaly.png" />
+            <a href="link">
+                @Html.MvcSiteMap().SiteMapPath()
+            </a>
+        </div>
+        <section class="SekcjaKoszyk">
+            <div class="SekcjaHeader" style="margin-bottom: 0px;">
+                <h1>Twój koszyk</h1>
+            </div>
+            <table id="koszykTabela">
+
+                @foreach (var cartItem in Model.OrderPosition)
+                {
+                    <tr id="car-row-@cartItem.Course.CourseId">
+                        <td>
+                            <a href="@Url.Action("Details", "Course", new {id = cartItem.Course.CourseId})">
+                                <img src="@Url.Content("~/Content/Kursy/" + cartItem.Course.ImgFileName)" />
+                            </a>
+                        </td>
+                        <td><a href="@Url.Action("Details", "Course", new {id = cartItem.Course.CourseId})">@cartItem.Course.CourseTitle</a></td>
+                        <td>Ilość: <span id="cart-id-number-@cartItem.Course.CourseId">@cartItem.Number</span></td>
+                        <td>@String.Format("{0:0.##}", cartItem.Value) zł</td>
+                        <td><a class="delete-course" data-id="@cartItem.Course.CourseId" href="">Usuń</a></td>
+                    </tr>
+                }
+
+                <tr id="cart-empty-message" @if (Model.OrderPosition != null && Model.OrderPosition.Count > 0) { <text> class="hidden" </text> }>
+                    <td>Your cart is empty, would you like to add something to it?</td>
+                </tr>
+
+            </table>
+
+            <div id="CenaCalkowita" style="">
+                Razem: <span id="total-price-value">@String.Format("{0:0.##}", Model.TotalPrice)</span> zł
+            </div>
+            <div class="SekcjaPrzyciski">
+                <a class="PrzyciskLink" href="link">Kontynułuj zakupy</a>
+                @if (Model.TotalPrice > 0)
+                {
+                    <a class="PrzyciskLink" id="cart-button-pay" href="@Url.Action("Pay", "Cart")">Zapłać</a>
+                }
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts
+{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryAndJqueryUI")
+
+    <script type="text/javascript">
+
+        $(".delete-course").click(function() {
+
+
+        })
+
+    </script>
+}
