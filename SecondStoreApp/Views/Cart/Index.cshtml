@@ -22,7 +22,7 @@
 
                 @foreach (var cartItem in Model.OrderPosition)
                 {
-                    <tr id="car-row-@cartItem.Course.CourseId">
+                    <tr id="cart-row-@cartItem.Course.CourseId">
                         <td>
                             <a href="@Url.Action("Details", "Course", new {id = cartItem.Course.CourseId})">
                                 <img src="@Url.Content("~/Content/Kursy/" + cartItem.Course.ImgFileName)" />
@@ -63,7 +63,31 @@
 
         $(".delete-course").click(function() {
 
+            var recordToDelete = $this.attr(data - id);
 
+            if (recordToDelete != '') {
+
+                $.post("/Cart/DeleteFromCart", { "courseId": recordToDelete }), function(response) {
+                    if (response.DaletedItemNumber == 0) {
+                        $("#cart-row-" + response.DeletedItemId).fadeOut('slow', function() {
+                            if (response.CartItemNumber == 0) {
+                                $("#cart-empty-message").removeClass("hidden");
+                            }
+                        });
+                    } else {
+                        $("#cart-id-number-" + response.DeletedItemId).text(response.DeletedItemNumber);
+                    }
+
+                    if (response.CartItemNumber ==0) {
+                        $("#cart-button-pay").addClass("hidden");
+                        $("#CenaCalkowita").addClass('invisible');
+                    }
+                    $("#total-price-value").text(response.CartTotalCost);
+                    $("#cart-header-item-number").text(response.CartItemNumber);
+
+                    return false;
+                }
+            }
         })
 
     </script>

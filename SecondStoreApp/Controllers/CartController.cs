@@ -49,6 +49,23 @@ namespace SecondStoreApp.Controllers
             return cartManager.DownloadCartItemNumber();
         }
 
+        public ActionResult DeleteFromCart(int courseId)
+        {
+            var itemNumber = cartManager.DeleteFromCart(courseId);
+            var cartItemNumber = cartManager.DownloadCartItemNumber();
+            var cartValue = cartManager.DownloadCartValue();
+
+            var result = new CartDeleteViewModel()
+            {
+                DeletedItemId = courseId,
+                DeletedItemNumber = cartItemNumber,
+                CartTotalCost = cartValue,
+                CartItemNumber = itemNumber
+            };
+
+            return Json(result);
+        }
+
 
     }
 }
