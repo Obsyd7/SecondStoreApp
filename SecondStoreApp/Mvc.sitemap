@@ -7,5 +7,11 @@
     <mvcSiteMapNode title="Category" controller="Course" action="List" dynamicNodeProvider="SecondStoreApp.Infrastructure.CategoryDynamicNodeProvider, SecondStoreApp">
     <mvcSiteMapNode title="Course" controller="Course" action="Details" dynamicNodeProvider="SecondStoreApp.Infrastructure.CourseDetailsDynamicNodeProvider, SecondStoreApp"/>
     </mvcSiteMapNode>
+    <mvcSiteMapNode title="Cart" controller="Cart" action="Index">
+      <mvcSiteMapNode title="Order Details" controller="Cart" action="Pay">
+        <mvcSiteMapNode title="Order Confirmation" controller="Cart" action="ConfirmOrder">
+    </mvcSiteMapNode>
+      </mvcSiteMapNode>
+    </mvcSiteMapNode>
   </mvcSiteMapNode>
 </mvcSiteMap>

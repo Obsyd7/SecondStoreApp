@@ -63,8 +63,10 @@
 
         $(".delete-course").click(function() {
 
-            var recordToDelete = $this.attr(data - id);
+            //there is an error here - has to be solved for delete button to function
 
+            var recordToDelete = $this.attr("data-id"); 
+            console.log(recordToDelete);
             if (recordToDelete != '') {
 
                 $.post("/Cart/DeleteFromCart", { "courseId": recordToDelete }), function(response) {
@@ -78,7 +80,7 @@
                         $("#cart-id-number-" + response.DeletedItemId).text(response.DeletedItemNumber);
                     }
 
-                    if (response.CartItemNumber ==0) {
+                    if (response.CartItemNumber == 0) {
                         $("#cart-button-pay").addClass("hidden");
                         $("#CenaCalkowita").addClass('invisible');
                     }
