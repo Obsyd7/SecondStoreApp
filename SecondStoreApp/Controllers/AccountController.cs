@@ -29,5 +29,26 @@ namespace SecondStoreApp.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+        public ActionResult Register()
+        {
+            
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
     }
 }

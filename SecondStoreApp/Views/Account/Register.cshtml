@@ -1,26 +1,27 @@
-﻿@model SecondStoreApp.ViewModels.LoginViewModel
+﻿@model SecondStoreApp.ViewModels.RegisterViewModel
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_RightSectionLayout.cshtml";
 }
 
 @section SectionTitle
 {
-    Log in
+
 }
 
 <div>
-    @using (@Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    @using (@Html.BeginForm("Register", "Account"))
     {
         @Html.AntiForgeryToken()
 
         <div id="login-error">
             @Html.ValidationMessage("loginError", "")
+            @Html.ValidationSummary()
         </div>
 
         <table id="login-table" style="margin-left: auto; margin-right: auto;">
             <tr>
-                <td>@Html.LabelFor(o => o.Email, "E-mail:")</td>
+                <td>@Html.LabelFor(o => o.Email, "E-mail: ")</td>
                 <td>
                     @Html.TextBoxFor(o => o.Email)
                     <div class="login-validation-message">
@@ -29,7 +30,7 @@
                 </td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(o => o.Password, "Password")</td>
+                <td>@Html.LabelFor(o => o.Password, "Password: ")</td>
                 <td>
                     @Html.PasswordFor(o => o.Password)
                     <div class="login-validation-message">
@@ -39,22 +40,28 @@
                 <td></td>
             </tr>
             <tr>
-                <td colspan="3">
-                    <div class="checkbox" style="margin-bottom: 10px;">
-                        @Html.CheckBoxFor(m => m.RememberMe, new { @checked = "checked" })
-                        @Html.LabelFor(m => m.RememberMe)
+                <td style="padding: 0px 20px 0px 0px; text-align: left;">
+                    @Html.LabelFor(o => o.ConfirmPassword, "Confirm Password")
+                </td>
+                <td style="padding: 0px; text-align: left;">
+                    @Html.PasswordFor(o => o.ConfirmPassword)
+                    <div class="login-validation-message">
+                        @Html.ValidationMessageFor(o => o.ConfirmPassword)
                     </div>
-
-                    <input type="submit" value="Log in" class="submitLink" style="height: 40px;" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" style="text-align: right; padding-right: 20px;">
+                    <input type="submit" value="Register" class="submitLink" style="height: 40px; text-align: right; margin: 0px; padding: 0px;" />
                 </td>
             </tr>
+
+
         </table>
+
     }
-
-    <div style="text-align: center;">
-
-        <a href="@Url.Action("Register")">I don't have an account yet.</a>
-    </div>
 </div>
 
 @section Scripts
