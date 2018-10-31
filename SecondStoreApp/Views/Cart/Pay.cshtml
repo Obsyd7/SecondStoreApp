@@ -1,0 +1,67 @@
+﻿@model SecondStoreApp.Models.Order
+@{
+    ViewBag.Title = "Pay";
+    Layout = "~/Views/Shared/_RightSectionLayout.cshtml";
+}
+
+@section SectionTitle
+{
+    Fill order details
+}
+
+@using (Html.BeginForm("Pay", "Cart"))
+{
+    <table id="checkout-address-table">
+        <tr>
+            <td>@Html.LabelFor(o => o.FirstName, "First Name:")</td>
+            <td>@Html.TextBoxFor(o => o.FirstName)</td>
+            <td>@Html.ValidationMessageFor(o => o.FirstName)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.LastName, "Last Name")</td>
+            <td>@Html.TextBoxFor(o => o.LastName)</td>
+            <td>@Html.ValidationMessageFor(o => o.LastName)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.Address, "Address")</td>
+            <td>@Html.TextBoxFor(o => o.Address)</td>
+            <td>@Html.ValidationMessageFor(o => o.Address)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.City, "City")</td>
+            <td>@Html.TextBoxFor(o => o.City)</td>
+            <td>@Html.ValidationMessageFor(o => o.City)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.Postcode, "Postcode")</td>
+            <td>@Html.TextBoxFor(o => o.Postcode)</td>
+            <td>@Html.ValidationMessageFor(o => o.Postcode)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.Phone, "Phone number")</td>
+            <td>@Html.TextBoxFor(o => o.Phone)</td>
+            <td>@Html.ValidationMessageFor(o => o.Phone)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.Email, "E-mail")</td>
+            <td>@Html.TextBoxFor(o => o.Email)</td>
+            <td>@Html.ValidationMessageFor(o => o.Email)</td>
+        </tr>
+        <tr>
+            <td><label for="Komentarz">Notes</label></td>
+            <td>
+                <textarea cols="40" rows="3" name="Komentarz">@Model.Comment</textarea>
+            </td>
+        </tr>
+    </table>
+
+    @Html.ValidationSummary()
+
+    <hr style="margin-bottom: 50px;" />
+
+    <div class="SekcjaPrzyciski">
+        <a class="PrzyciskLink" href="">Back</a>
+        <input type="submit" class="PrzyciskLink" style="" value="Confirm Order" />
+    </div>
+
+}

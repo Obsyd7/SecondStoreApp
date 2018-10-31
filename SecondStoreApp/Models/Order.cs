@@ -10,6 +10,10 @@ namespace SecondStoreApp.Models
     {
         public int OrderId { get; set; }
 
+        public string UserId { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
+
         [Required(ErrorMessage = "Please, enter first name")]
         [StringLength(50)]
         public string FirstName { get; set; }
@@ -20,18 +24,24 @@ namespace SecondStoreApp.Models
 
         [Required(ErrorMessage = "Please, enter the street")]
         [StringLength(100)]
-        public string Street { get; set; }
+        public string Address { get; set; }
 
         [Required(ErrorMessage = "Please, enter the city")]
         [StringLength(100)]
         public string City { get; set; }
 
         [Required(ErrorMessage = "Please, enter the postcard")]
-        [StringLength(20)]
+        [StringLength(6)]
         public string Postcode { get; set; }
 
+
+        [Required(ErrorMessage = "Please, enter your phone number.")]
+        [StringLength(20)]
+        [RegularExpression(@"(\+\d{2})*[\d\s-]+", ErrorMessage = "Invalid phone number")]
         public string Phone { get; set; }
 
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid e-mail address")]
         public string Email { get; set; }
 
         public string Comment { get; set; }

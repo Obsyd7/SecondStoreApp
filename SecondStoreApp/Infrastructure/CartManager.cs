@@ -98,13 +98,13 @@ namespace SecondStoreApp.Infrastructure
             return number;
         }
 
-        public Order CreateOrder(Order newOrder, int userId)
+        public Order CreateOrder(Order newOrder, string userId)
         {
             var cart = DownloadCart();
 
             newOrder.DateAdded = DateTime.Now;
-            
-            //newOrder.userId = userId;
+
+            newOrder.UserId = userId;
 
             db.Orders.Add(newOrder);
 

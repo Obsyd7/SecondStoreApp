@@ -10,8 +10,8 @@
 <body>
 <header>
     <div style="overflow: hidden;">
-        <a id="koszykHeaderLink" href="link">
-            Koszyk (<span id="cart-header-item-number">@Html.Action("DownloadNumberOfItemsFromCart", "Cart")</span>)
+        <a id="koszykHeaderLink" href="@Url.Action("Index", "Cart")">
+            Cart (<span id="koszyk-naglowek-ilosc-elementow">@Html.Action("DownloadNumberOfItemsFromCart", "Cart")</span>)
             <span></span>
         </a>
         
