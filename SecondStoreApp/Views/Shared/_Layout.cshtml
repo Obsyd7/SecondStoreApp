@@ -14,6 +14,9 @@
             Koszyk (<span id="cart-header-item-number">@Html.Action("DownloadNumberOfItemsFromCart", "Cart")</span>)
             <span></span>
         </a>
+        
+        @Html.Partial("_LoginPartial")
+
         <a id="indexHeaderLogo" href="@Url.Content("~/")">
             <img src="@Url.Content("~/Content/Images/logo.png")" class="center" />
         </a>
