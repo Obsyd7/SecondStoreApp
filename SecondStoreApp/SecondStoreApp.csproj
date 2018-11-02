@@ -261,6 +261,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\CourseInitializer.cs" />
     <Compile Include="DAL\StoreDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -306,6 +307,7 @@
     <Compile Include="ViewModels\CartDeleteViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -344,6 +346,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Cart\Pay.cshtml" />
     <Content Include="Views\Cart\ConfirmOrder.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Shared\_ManageLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
