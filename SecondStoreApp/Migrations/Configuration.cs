@@ -2,21 +2,19 @@ using SecondStoreApp.DAL;
 
 namespace SecondStoreApp.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<SecondStoreApp.DAL.StoreDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<StoreDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SecondStoreApp.DAL.StoreDbContext context)
+        protected override void Seed(StoreDbContext context)
         {
             CourseInitializer.SeedCourseData(context);
+            CourseInitializer.SeedUsers(context);
 
             //  This method will be called after migrating to the latest version.
 

@@ -175,12 +175,14 @@ namespace SecondStoreApp.Controllers
 
             if (isAdmin)
             {
-                userOrder = db.Orders.Include("OrderPosition").OrderByDescending(o => o.DateAdded).ToArray();
+                //BUGGED
+                userOrder = db.Orders.ToList();
             }
             else
             {
+                //BUGGED
                 var userId = User.Identity.GetUserId();
-                userOrder = db.Orders.Where(o => o.UserId == userId).Include("OrderPosition").OrderByDescending(o => o.DateAdded).ToArray();
+                userOrder = db.Orders.Where(o => o.UserId == userId).Include("OrderPositions").OrderByDescending(o => o.DateAdded).ToArray();
             }
 
             return View(userOrder);
