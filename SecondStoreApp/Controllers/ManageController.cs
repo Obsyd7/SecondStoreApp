@@ -21,11 +21,11 @@ namespace SecondStoreApp.Controllers
         [Authorize]
         public class ManageController : Controller
         {
-            //private static Logger logger = LogManager.GetCurrentClassLogger();
-            private StoreDbContext db;
-            //private IMailService mailService;
+        //private static Logger logger = LogManager.GetCurrentClassLogger();
+        private StoreDbContext db;
+        //private IMailService mailService;
 
-            public enum ManageMessageId
+        public enum ManageMessageId
             {
                 ChangePasswordSuccess,
                 Error
@@ -64,7 +64,6 @@ namespace SecondStoreApp.Controllers
                 }
             }
 
-            // GET: Manage
             public async Task<ActionResult> Index(ManageMessageId? message)
             {
                 //var name = User.Identity.Name;
@@ -164,46 +163,46 @@ namespace SecondStoreApp.Controllers
                 AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, await user.GenerateUserIdentityAsync(UserManager));
             }
 
-        //public ActionResult OrderList()
-        //{
-        //    var name = User.Identity.Name;
-        //    //logger.Info("Admin zamowienia | " + name);
+        public ActionResult OrderList()
+        {
+            //var name = User.Identity.Name;
+            //logger.Info("Admin orders | " + name);
 
-        //    bool isAdmin = User.IsInRole("Admin");
-        //    ViewBag.UserIsAdmin = isAdmin;
+            bool isAdmin = User.IsInRole("Admin");
+            ViewBag.UserIsAdmin = isAdmin;
 
-        //    IEnumerable<Order> userOrder;
+            IEnumerable<Order> userOrder;
 
-        //    // Dla administratora zwracamy wszystkie zamowienia
+            if (isAdmin)
+            {
+                userOrder = db.Orders.Include("OrderPosition").OrderByDescending(o => o.DateAdded).ToArray();
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                userOrder = db.Orders.Where(o => o.UserId == userId).Include("OrderPosition").OrderByDescending(o => o.DateAdded).ToArray();
+            }
 
-        //    if (isAdmin)
-        //    {
-        //        userOrder = db.Orders.Include("OrderPosition").OrderByDescending(o => o.DateAdded).ToArray();
-        //    }
-        //    else
-        //    {
-        //        var userId = User.Identity.GetUserId();
-        //        userOrder = db.Orders.Where(o => o.UserId == userId).Include("OrderPosition").OrderByDescending(o => o.DateAdded).ToArray();
-        //    }
+            return View(userOrder);
+        }
 
-        //    return View(userOrder);
-        //}
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public OrderState ChangeOrderState(Order order)
+        {
+            var modifiedOrder = db.Orders.Find(order.OrderId);
 
-        //[HttpPost]
-        //[Authorize(Roles = "Admin")]
-        //public StanZamowienia ZmianaStanuZamowienia(Zamowienie zamowienie)
-        //{
-        //    Zamowienie zamowienieDoModyfikacji = db.Zamowienia.Find(zamowienie.ZamowienieID);
-        //    zamowienieDoModyfikacji.StanZamowienia = zamowienie.StanZamowienia;
-        //    db.SaveChanges();
+            modifiedOrder.OrderState = order.OrderState;
 
-        //    if (zamowienieDoModyfikacji.StanZamowienia == StanZamowienia.Zrealizowane)
-        //    {
-        //        this.mailService.WyslanieZamowienieZrealizowaneEmail(zamowienieDoModyfikacji);
-        //    }
+            db.SaveChanges();
 
-        //    return zamowienie.StanZamowienia;
-        //}
+            //if (modifiedOrder.OrderState == OrderState.OrderFulfilled)
+            //{
+            //    this.mailService.WyslanieZamowienieZrealizowaneEmail(zamowienieDoModyfikacji);
+            //}
+
+            return order.OrderState;
+        }
 
         //[Authorize(Roles = "Admin")]
         //public ActionResult DodajKurs(int? kursId, bool? potwierdzenie)

@@ -1,0 +1,116 @@
+﻿@model IEnumerable<SecondStoreApp.Models.Order>
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<div>
+    <hr/>
+    <h2 class="manageHeader"> Your Orders </h2>
+    <div>
+        @if (Model.Any())
+        {
+            <table id="zamowienia-table">
+
+                @foreach (var order in Model)
+                {
+                    <tr @if (order.OrderState == SecondStoreApp.Models.OrderState.NewOrder) { <text> class="noweZamowienie" </text> }>
+                        <td>
+                            <strong>Order number: </strong>@order.OrderId
+                        </td>
+                        <td>
+                            <strong>Date: </strong>
+                            @order.DateAdded.ToString("dd-MM-yyyy")
+                        </td>
+                        <td>
+                            <strong>State: </strong><br />
+
+                            @if (ViewBag.UserIsAdmin)
+                            {
+                                using (Html.BeginForm("ChangeOrderState", "Manage"))
+                                {
+                                    @Html.HiddenFor(o => order.OrderId)
+                                    @Html.EnumDropDownListFor(o => order.OrderState, new { @class = "StanZamowieniaZmien" })
+                                }
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(o => order.OrderState)
+                            }
+                        </td>
+                        <td>
+                            <strong>Delivery information:</strong><br />
+                            @order.FirstName @order.LastName<br />
+                            @order.Address<br />
+                            @order.Postcode @order.City<br />
+                        </td>
+                        <td>
+                            <strong>Feedback: </strong><br />
+                            @order.Comment
+                        </td>
+                        <td>
+                            <strong>Total cost:</strong> @order.OrderValue zł
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <section>
+                                <ul class="TrzyKolumnyList duzaListaKursy-bottom">
+
+                                    @foreach (var orderItem in order.OrderPosition)
+                                    {
+                                        <li>
+                                            <article>
+                                                <a class="kursSzczegolyLink" href="@Url.Action("Details", "Course", new { id = orderItem.CourseId })">
+                                                    <img class="kurs" src="@Url.Content("~/Content/Kursy/" + orderItem.Course.ImgFileName)" />
+                                                    <h1>
+                                                        @orderItem.Course.Author - @orderItem.Course.CourseTitle<br />
+                                                        <strong>Quantity: @orderItem.Volume, total: @(orderItem.Volume * orderItem.OrderCost)  zł</strong>
+                                                    </h1>
+                                                </a>
+                                            </article>
+                                        </li>
+                                    }
+                                </ul>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                    <!-- next order -->
+                }
+            </table>
+        }
+        else
+        {
+            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                No Orders were found.
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    <script>
+        $(".StanZamowieniaZmien").on('change', function () {
+
+            var f = $(this.form);
+            var tr = f.closest("tr");
+            var action = f.attr("action");
+            var serializedForm = f.serialize();
+
+            $.post(action, serializedForm).done(function (data) {
+                if (data == '@SecondStoreApp.Models.OrderState.NewOrder.ToString()') {
+                    tr.addClass("noweZamowienie")
+                }
+                else {
+                    tr.removeClass("noweZamowienie");
+                }
+            });
+        });
+    </script>
+}
