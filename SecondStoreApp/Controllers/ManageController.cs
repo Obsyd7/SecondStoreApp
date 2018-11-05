@@ -18,6 +18,7 @@ using WebGrease;
 
 namespace SecondStoreApp.Controllers
 {
+        
         [Authorize]
         public class ManageController : Controller
         {
@@ -206,99 +207,102 @@ namespace SecondStoreApp.Controllers
             return order.OrderState;
         }
 
-        //[Authorize(Roles = "Admin")]
-        //public ActionResult DodajKurs(int? kursId, bool? potwierdzenie)
-        //{
-        //    Kurs kurs;
-        //    if (kursId.HasValue)
-        //    {
-        //        ViewBag.EditMode = true;
-        //        kurs = db.Kursy.Find(kursId);
-        //    }
-        //    else
-        //    {
-        //        ViewBag.EditMode = false;
-        //        kurs = new Kurs();
-        //    }
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddCourse(int? courseId, bool? confirmation)
+        {
+            Course course;
 
-        //    var result = new EditKursViewModel();
-        //    result.Kategorie = db.Kategorie.ToList();
-        //    result.Kurs = kurs;
-        //    result.Potwierdzenie = potwierdzenie;
+            if (courseId.HasValue)
+            {
+                ViewBag.EditMode = true;
+                course = db.Courses.Find(courseId);
+            }
+            else
+            {
+                ViewBag.EditMode = false;
+                course = new Course();
+            }
 
-        //    return View(result);
-        //}
+            //BUGGED
 
-        //[HttpPost]
-        //[Authorize(Roles = "Admin")]
-        //public ActionResult DodajKurs(EditKursViewModel model, HttpPostedFileBase file)
-        //{
-        //    if (model.Kurs.KursId > 0)
-        //    {
-        //        // modyfikacja kursu
-        //        db.Entry(model.Kurs).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("DodajKurs", new { potwierdzenie = true });
-        //    }
-        //    else
-        //    {
-        //        // Sprawdzenie, czy użytkownik wybrał plik
-        //        if (file != null && file.ContentLength > 0)
-        //        {
-        //            if (ModelState.IsValid)
-        //            {
-        //                // Generowanie pliku
-        //                var fileExt = Path.GetExtension(file.FileName);
-        //                var filename = Guid.NewGuid() + fileExt;
+            var result = new EditCourseViewModel();
+            result.Category = db.Categories.ToList();
+            result.Course = course;
+            result.Confirmation = confirmation;
 
-        //                var path = Path.Combine(Server.MapPath(AppConfig.ObrazkiFolderWzgledny), filename);
-        //                file.SaveAs(path);
+            return View(result);
+        }
 
-        //                model.Kurs.NazwaPlikuObrazka = filename;
-        //                model.Kurs.DataDodania = DateTime.Now;
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddCourse(EditCourseViewModel model, HttpPostedFileBase file)
+        {
+            if (model.Course.CourseId > 0)
+            {
+                // modyfikacja kursu
+                db.Entry(model.Course).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("AddCourse", new { potwierdzenie = true });
+            }
+            else
+            {
+                // Sprawdzenie, czy użytkownik wybrał plik
+                if (file != null && file.ContentLength > 0)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        // Generowanie pliku
+                        var fileExt = Path.GetExtension(file.FileName);
+                        var filename = Guid.NewGuid() + fileExt;
 
-        //                db.Entry(model.Kurs).State = EntityState.Added;
-        //                db.SaveChanges();
+                        var path = Path.Combine(Server.MapPath(AppConfig.CourseImagesRelativeFolder), filename);
+                        file.SaveAs(path);
 
-        //                return RedirectToAction("DodajKurs", new { potwierdzenie = true });
-        //            }
-        //            else
-        //            {
-        //                var kategorie = db.Kategorie.ToList();
-        //                model.Kategorie = kategorie;
-        //                return View(model);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError("", "Nie wskazano pliku");
-        //            var kategorie = db.Kategorie.ToList();
-        //            model.Kategorie = kategorie;
-        //            return View(model);
-        //        }
-        //    }
+                        model.Course.ImgFileName = filename;
+                        model.Course.DateAdded = DateTime.Now;
 
-        //}
+                        db.Entry(model.Course).State = EntityState.Added;
+                        db.SaveChanges();
 
-        //[Authorize(Roles = "Admin")]
-        //public ActionResult UkryjKurs(int kursId)
-        //{
-        //    var kurs = db.Kursy.Find(kursId);
-        //    kurs.Ukryty = true;
-        //    db.SaveChanges();
+                        return RedirectToAction("AddCourse", new { confirmation = true });
+                    }
+                    else
+                    {
+                        var category = db.Categories.ToList();
+                        model.Category = category;
+                        return View(model);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "No image has been added.");
+                    var category = db.Categories.ToList();
+                    model.Category = category;
+                    return View(model);
+                }
+            }
 
-        //    return RedirectToAction("DodajKurs", new { potwierdzenie = true });
-        //}
+        }
 
-        //[Authorize(Roles = "Admin")]
-        //public ActionResult PokazKurs(int kursId)
-        //{
-        //    var kurs = db.Kursy.Find(kursId);
-        //    kurs.Ukryty = false;
-        //    db.SaveChanges();
+        [Authorize(Roles = "Admin")]
+        public ActionResult HideCourse(int courseId)
+        {
+            var course = db.Courses.Find(courseId);
+            course.Hidden = true;
+            db.SaveChanges();
 
-        //    return RedirectToAction("DodajKurs", new { potwierdzenie = true });
-        //}
+            return RedirectToAction("AddCourse", new { confirmation = true });
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ShowCourse(int courseId)
+        {
+            var course = db.Courses.Find(courseId);
+            course.Hidden = false;
+            db.SaveChanges();
+
+            return RedirectToAction("AddCourse", new { confirmation = true });
+        }
 
         //[AllowAnonymous]
         //public ActionResult WyslaniePotwierdzenieZamowieniaEmail(int zamowienieId, string nazwisko)

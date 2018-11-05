@@ -277,21 +277,9 @@
     <Compile Include="Infrastructure\ISessionManager.cs" />
     <Compile Include="Infrastructure\SessionManager.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\201810160927475_DatabaseFix.cs" />
-    <Compile Include="Migrations\201810160927475_DatabaseFix.Designer.cs">
-      <DependentUpon>201810160927475_DatabaseFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810301640542_Login.cs" />
-    <Compile Include="Migrations\201810301640542_Login.Designer.cs">
-      <DependentUpon>201810301640542_Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810311132053_AddAspIdentity.cs" />
-    <Compile Include="Migrations\201810311132053_AddAspIdentity.Designer.cs">
-      <DependentUpon>201810311132053_AddAspIdentity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810311859146_Orders.cs" />
-    <Compile Include="Migrations\201810311859146_Orders.Designer.cs">
-      <DependentUpon>201810311859146_Orders.cs</DependentUpon>
+    <Compile Include="Migrations\201811051207265_TEST1.cs" />
+    <Compile Include="Migrations\201811051207265_TEST1.Designer.cs">
+      <DependentUpon>201811051207265_TEST1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -306,6 +294,7 @@
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\CartDeleteViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
+    <Compile Include="ViewModels\EditCourseViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
   </ItemGroup>
@@ -350,6 +339,7 @@
     <Content Include="Views\Shared\_ManageLayout.cshtml" />
     <Content Include="Views\Manage\OrderList.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Manage\AddCourse.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -361,17 +351,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810160927475_DatabaseFix.resx">
-      <DependentUpon>201810160927475_DatabaseFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810301640542_Login.resx">
-      <DependentUpon>201810301640542_Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810311132053_AddAspIdentity.resx">
-      <DependentUpon>201810311132053_AddAspIdentity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810311859146_Orders.resx">
-      <DependentUpon>201810311859146_Orders.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811051207265_TEST1.resx">
+      <DependentUpon>201811051207265_TEST1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
