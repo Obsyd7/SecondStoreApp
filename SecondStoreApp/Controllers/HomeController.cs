@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NLog;
 using SecondStoreApp.DAL;
 using SecondStoreApp.Infrastructure;
 using SecondStoreApp.Models;
@@ -14,9 +15,11 @@ namespace SecondStoreApp.Controllers
     {
         private StoreDbContext db = new StoreDbContext();
 
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         public ActionResult Index()
         {
-            
+            logger.Info("You are on the Home Page");
 
             ICacheProvider cache = new DefaultCacheProvider();
 
