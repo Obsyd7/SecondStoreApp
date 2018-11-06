@@ -1,0 +1,3 @@
+2018-11-05 16:08:35.5163|INFO|SecondStoreApp.Controllers.HomeController|You are on the Home Page
+2018-11-05 16:08:35.5163|INFO|SecondStoreApp.Controllers.HomeController|You are on the Home Page
+2018-11-05 16:08:48.6940|INFO|SecondStoreApp.Controllers.HomeController|You are on the Home Page

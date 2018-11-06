@@ -1,0 +1,28 @@
+﻿@model SecondStoreApp.ViewModels.OrderConfirmationEmail
+Content-Type: text/plain; charset=utf-8
+
+Thank You!
+
+Your order at SecondStore.com has been admitted.
+Ordered items :
+
+@{
+    IEnumerable<SecondStoreApp.Models.OrderPosition> orderItem = Model.OrderPosition;
+
+    for (var i = 0; i < orderItem.Count(); i++)
+    {
+        @orderItem.ElementAt(i).Course.CourseTitle
+    }
+}
+
+Please, transfer @Model.Value zł, with the title: order nr @Model.OrderNumber to our bank account to finish the transaction:
+
+Practical Courses courses Sp. z o.o
+Green Avenue 20
+20-220 New York
+U.S Bancorp 10 0000 0000 0000 0000 0000
+
+You will gain access to the courses the moment we receive the payment.
+
+Thak you again and feel free to visit us again!
+SecondStore.com

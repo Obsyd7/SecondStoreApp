@@ -130,6 +130,17 @@ namespace SecondStoreApp.Controllers
                 // opróżnimy nasz koszyk zakupów
                 cartManager.EmptyCart();
 
+                var order = db.Orders.Include("OrderPosition").Include("OrderPosition.Course").SingleOrDefault(o => o.OrderId == newOrder.OrderId);
+
+                var email = new OrderConfirmationEmail();
+                email.To = order.Email;
+                email.From = "secondstore@gmail.com";
+                email.Value = order.OrderValue;
+                email.OrderNumber = order.OrderId;
+                email.OrderPosition = order.OrderPosition;
+
+                email.Send();
+
                 //maileService.WyslaniePotwierdzenieZamowieniaEmail(newOrder);
 
                 return RedirectToAction("ConfirmOrder");

@@ -1,0 +1,42 @@
+﻿@model SecondStoreApp.ViewModels.OrderConfirmationEmail
+Content-Type: text/html; charset=utf-8
+
+<html>
+<body>
+
+    @Html.EmbedImage("~/content/Images/logo.png")
+
+    <p>Thank You!!</p>
+    <p>Your order at SecondStore.com has been admitted.</p>
+    <p>Ordered items :</p>
+
+    @{
+        IEnumerable<SecondStoreApp.Models.OrderPosition> orderItem = Model.OrderPosition;
+
+        for (int i = 0; i < orderItem.Count(); i++)
+        {
+            <p>
+                @orderItem.ElementAt(i).Course.CourseTitle - @orderItem.ElementAt(i).Course.Author
+                - @orderItem.ElementAt(i).Course.CoursePrice zł. - @orderItem.ElementAt(i).Volume szt.
+            </p>
+            <p>
+                @*BUG*@
+                @*@Html.EmbedImage(Path.Combine((string)Model.ImgPath, orderItem.ElementAt(i).Course.ImgFileName), "", new { @width = 200, @class = "mcnImage", @style = "padding-bottom: 0px;max-width: 500px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;" })*@
+            </p>
+        }
+    }
+
+    <p>Please, transfer @Model.Value zł, with the title: order nr @Model.OrderNumber to our bank account to finish the transaction:</p>
+    <p>Practical Courses courses Sp. z o.o</p>
+    <p>Green Avenue 20</p>
+    <p>20-220 New York</p>
+    <p>U.S Bancorp 10 0000 0000 0000 0000 0000 </p>
+
+    <p>You will gain access to the courses the moment we receive the payment.</p>
+    <p>Thank you again and feel free to visit us again!</p>
+    <p>SecondStore.com</p>
+
+
+</body>
+
+</html>
