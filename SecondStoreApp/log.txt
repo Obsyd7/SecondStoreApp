@@ -1,3 +1,66 @@
 2018-11-05 16:08:35.5163|INFO|SecondStoreApp.Controllers.HomeController|You are on the Home Page
 2018-11-05 16:08:35.5163|INFO|SecondStoreApp.Controllers.HomeController|You are on the Home Page
 2018-11-05 16:08:48.6940|INFO|SecondStoreApp.Controllers.HomeController|You are on the Home Page
+2018-11-06 12:55:13.7926|INFO|Hangfire.SqlServer.SqlServerObjectsInstaller|Start installing Hangfire SQL objects...
+2018-11-06 12:55:15.3741|INFO|Hangfire.SqlServer.SqlServerObjectsInstaller|Hangfire SQL objects installed.
+2018-11-06 12:55:15.4941|INFO|Hangfire.BackgroundJobServer|Starting Hangfire Server
+2018-11-06 12:55:15.4941|INFO|Hangfire.BackgroundJobServer|Using job storage: 'SQL Server: (LocalDb)\MSSQLLocalDB@aspnet-SecondStore'
+2018-11-06 12:55:15.5081|INFO|Hangfire.BackgroundJobServer|Using the following options for SQL Server job storage:
+2018-11-06 12:55:15.5081|INFO|Hangfire.BackgroundJobServer|    Queue poll interval: 00:00:15.
+2018-11-06 12:55:15.5081|INFO|Hangfire.BackgroundJobServer|Using the following options for Hangfire Server:
+2018-11-06 12:55:15.5201|INFO|Hangfire.BackgroundJobServer|    Worker count: 20
+2018-11-06 12:55:15.5891|INFO|Hangfire.BackgroundJobServer|    Listening queues: 'default'
+2018-11-06 12:55:15.5980|INFO|Hangfire.BackgroundJobServer|    Shutdown timeout: 00:00:15
+2018-11-06 12:55:15.5980|INFO|Hangfire.BackgroundJobServer|    Schedule polling interval: 00:00:15
+2018-11-06 12:55:15.6680|DEBUG|Hangfire.Server.BackgroundProcessingServer|Background process 'BackgroundProcessingServer' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.ServerHeartbeat|Background process 'ServerHeartbeat' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.ServerWatchdog|Background process 'ServerWatchdog' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.SqlServer.ExpirationManager|Background process 'Hangfire.SqlServer.ExpirationManager' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.SqlServer.CountersAggregator|Background process 'Hangfire.SqlServer.CountersAggregator' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #fdc06601' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #e38e76b2' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #137e7906' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #536f4519' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #3edfbb67' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #a5c5dc81' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #9dbd5035' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #c97b622c' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #e3ae7678' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #21457c9f' started.
+2018-11-06 12:55:15.8960|DEBUG|Hangfire.Server.Worker|Background process 'Worker #dd48468f' started.
+2018-11-06 12:55:15.9119|DEBUG|Hangfire.Server.Worker|Background process 'Worker #dacb0588' started.
+2018-11-06 12:55:15.9119|DEBUG|Hangfire.Server.Worker|Background process 'Worker #a5fa05f1' started.
+2018-11-06 12:55:15.9119|DEBUG|Hangfire.Server.Worker|Background process 'Worker #3e17315c' started.
+2018-11-06 12:55:15.9119|DEBUG|Hangfire.Server.Worker|Background process 'Worker #54146e93' started.
+2018-11-06 12:55:15.9119|DEBUG|Hangfire.SqlServer.ExpirationManager|Removing outdated records from the 'AggregatedCounter' table...
+2018-11-06 12:55:15.9119|DEBUG|Hangfire.Server.Worker|Background process 'Worker #d5c15e54' started.
+2018-11-06 12:55:15.9119|DEBUG|Hangfire.Server.Worker|Background process 'Worker #551add42' started.
+2018-11-06 12:55:15.9119|DEBUG|Hangfire.SqlServer.CountersAggregator|Aggregating records in 'Counter' table...
+2018-11-06 12:55:15.9289|DEBUG|Hangfire.Server.Worker|Background process 'Worker #02b986b9' started.
+2018-11-06 12:55:15.9289|DEBUG|Hangfire.Server.Worker|Background process 'Worker #ef02c6c1' started.
+2018-11-06 12:55:15.9289|DEBUG|Hangfire.Server.Worker|Background process 'Worker #76f1ea24' started.
+2018-11-06 12:55:15.9439|DEBUG|Hangfire.Server.DelayedJobScheduler|Background process 'DelayedJobScheduler' started.
+2018-11-06 12:55:15.9439|DEBUG|Hangfire.Server.RecurringJobScheduler|Background process 'RecurringJobScheduler' started.
+2018-11-06 12:55:16.2288|TRACE|Hangfire.SqlServer.ExpirationManager|Outdated records removed from the 'AggregatedCounter' table.
+2018-11-06 12:55:16.2458|DEBUG|Hangfire.SqlServer.ExpirationManager|Removing outdated records from the 'Job' table...
+2018-11-06 12:55:16.2608|TRACE|Hangfire.SqlServer.ExpirationManager|Outdated records removed from the 'Job' table.
+2018-11-06 12:55:16.2698|DEBUG|Hangfire.SqlServer.ExpirationManager|Removing outdated records from the 'List' table...
+2018-11-06 12:55:16.2608|TRACE|Hangfire.SqlServer.CountersAggregator|Records from the 'Counter' table aggregated.
+2018-11-06 12:55:16.2698|TRACE|Hangfire.SqlServer.ExpirationManager|Outdated records removed from the 'List' table.
+2018-11-06 12:55:16.2878|DEBUG|Hangfire.SqlServer.ExpirationManager|Removing outdated records from the 'Set' table...
+2018-11-06 12:55:16.2878|TRACE|Hangfire.SqlServer.ExpirationManager|Outdated records removed from the 'Set' table.
+2018-11-06 12:55:16.2878|DEBUG|Hangfire.SqlServer.ExpirationManager|Removing outdated records from the 'Hash' table...
+2018-11-06 12:55:16.3038|TRACE|Hangfire.SqlServer.ExpirationManager|Outdated records removed from the 'Hash' table.
+2018-11-06 12:55:20.3345|INFO|SecondStoreApp.Controllers.HomeController|You are on the Home Page
+2018-11-06 12:55:36.9141|INFO|SecondStoreApp.Controllers.HomeController|You are on the Home Page
+2018-11-06 12:55:52.3132|WARN|Hangfire.AutomaticRetryAttribute|Failed to process the job '1': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:41.
+2018-11-06 12:56:20.0322|INFO|SecondStoreApp.Controllers.HomeController|You are on the Home Page
+2018-11-06 12:56:46.2907|INFO|Hangfire.Server.DelayedJobScheduler|1 scheduled job(s) enqueued.
+2018-11-06 12:56:46.3117|WARN|Hangfire.AutomaticRetryAttribute|Failed to process the job '1': an exception occurred. Retry attempt 2 of 10 will be performed in 00:01:06.
+2018-11-06 12:58:01.3134|INFO|Hangfire.Server.DelayedJobScheduler|1 scheduled job(s) enqueued.
+2018-11-06 12:58:01.3234|WARN|Hangfire.AutomaticRetryAttribute|Failed to process the job '1': an exception occurred. Retry attempt 3 of 10 will be performed in 00:00:37.
+2018-11-06 12:58:21.7647|INFO|SecondStoreApp.Controllers.HomeController|You are on the Home Page
+2018-11-06 12:58:46.3408|INFO|Hangfire.Server.DelayedJobScheduler|1 scheduled job(s) enqueued.
+2018-11-06 12:58:46.3528|WARN|Hangfire.AutomaticRetryAttribute|Failed to process the job '1': an exception occurred. Retry attempt 4 of 10 will be performed in 00:02:24.
+2018-11-06 13:00:16.2837|DEBUG|Hangfire.SqlServer.CountersAggregator|Aggregating records in 'Counter' table...
+2018-11-06 13:00:16.2907|TRACE|Hangfire.SqlServer.CountersAggregator|Records from the 'Counter' table aggregated.

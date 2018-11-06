@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Hangfire;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using SecondStoreApp.DAL;
@@ -116,32 +118,21 @@ namespace SecondStoreApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                // pobieramy id uzytkownika aktualnie zalogowanego
                 var userId = User.Identity.GetUserId();
 
-                // utworzenie obiektu zamowienia na podstawie tego co mamy w koszyku
                 var newOrder = cartManager.CreateOrder(orderDetail, userId);
 
-                // szczegóły użytkownika - aktualizacja danych 
                 var user = await UserManager.FindByIdAsync(userId);
                 TryUpdateModel(user.UserData);
                 await UserManager.UpdateAsync(user);
 
-                // opróżnimy nasz koszyk zakupów
                 cartManager.EmptyCart();
 
-                var order = db.Orders.Include("OrderPosition").Include("OrderPosition.Course").SingleOrDefault(o => o.OrderId == newOrder.OrderId);
+                string url = Url.Action("ConfirmOrderEmail", "Cart", new { orderId = newOrder.OrderId, lastName = newOrder.LastName}, Request.Url.Scheme);
 
-                var email = new OrderConfirmationEmail();
-                email.To = order.Email;
-                email.From = "secondstore@gmail.com";
-                email.Value = order.OrderValue;
-                email.OrderNumber = order.OrderId;
-                email.OrderPosition = order.OrderPosition;
+                BackgroundJob.Enqueue(() => Call(url));
 
-                email.Send();
-
-                //maileService.WyslaniePotwierdzenieZamowieniaEmail(newOrder);
+                //mailService.SendConfirmationOrder(newOrder);
 
                 return RedirectToAction("ConfirmOrder");
             }
@@ -149,12 +140,36 @@ namespace SecondStoreApp.Controllers
                 return View(orderDetail);
         }
 
+        public void Call(string url)
+        {
+            var req = WebRequest.Create(url);
+            req.GetResponseAsync();
+        }
+
+        public ActionResult ConfirmOrderEmail(int orderId, string lastName)
+        {
+            var order = db.Orders.Include("OrderPosition").Include("OrderPosition.Course").SingleOrDefault(o => o.OrderId == orderId && o.LastName == lastName);
+
+            if (order == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            var email = new OrderConfirmationEmail();
+            email.To = order.Email;
+            email.From = "secondstore@gmail.com";
+            email.Value = order.OrderValue;
+            email.OrderNumber = order.OrderId;
+            email.OrderPosition = order.OrderPosition;
+
+            email.Send();
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
         public ActionResult ConfirmOrder()
         {
             return View();
         }
-
-
-
     }
 }
